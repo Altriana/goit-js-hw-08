@@ -16,16 +16,12 @@ body {
     position: absolute;
     margin: 0;
     max-width: 1440px;
-    
-    
+       
 }
-.gallery-item {
-   
-}
+.gallery-image:hover {
+    cursor: url(svg.svg), auto;
+    }
 
-.gallery-link {
-
-}
 .gallery-image {
     width: 360px;
     height: 200px;
