@@ -89,18 +89,41 @@ const li = document.createElement("li");
     image.dataset.source = original;
     image.alt = description;
 
+    image.addEventListener("click", (event) => {
+        event.preventDefault(); 
+        modal({ original });
+    })
+    
     a.appendChild(image);
     li.appendChild(a);
-
-    return li;
-    }
-
-createGallery({ images });
     
+    return li;
+}
+
+
+const modal = ({ original }) => {
+    
+    const instance = basicLightbox.create(`
+        <img class="modal" src=${original} width="800" height="600">
+        `)
+    instance.show()
+
+    const closeModalOnEscape = (event) => {
+    if (event.key === 'Escape') {
+      instance.close();
+      document.removeEventListener('keydown', closeModalOnEscape);
+    }
+  };
+
+    document.addEventListener('keydown', closeModalOnEscape);
+};
 
 
 
-
+    
+    
+    
+    createGallery({ images });
 
 
 
